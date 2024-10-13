@@ -1,81 +1,134 @@
-# quarkus-api
+# 🛠️ quarkus-api
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Este projeto utiliza **Quarkus**, o framework Java **Supersônico** e **Subatômico**.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+![Quarkus](https://img.shields.io/badge/Quarkus-v2.6.0-orange?style=flat-square)
+![Java](https://img.shields.io/badge/Java-17-brightgreen?style=flat-square)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?style=flat-square)
 
-## Running the application in dev mode
+## 🌟 O que é Quarkus?
 
-You can run your application in dev mode that enables live coding using:
+Quarkus é um framework desenvolvido para facilitar a criação de aplicações Java otimizadas para ambientes em nuvem e microserviços. Ele se destaca por sua **inicialização rápida** e **menor consumo de memória**, sendo ideal para aplicações nativas em contêineres.
 
-```shell script
+Por isso, eu fiz uma base para meus projetos futuros, onde deixei mais acessível a configuração, misturando o `.env` e o `src/main/resources/application.properties`. Dessa forma, consigo proteger mais as variáveis de ambiente e trocar de maneira fácil entre os ambientes, como **dev**, **prod** e **testes**.
+
+Também coloquei um **Docker Compose** para que vocês possam setar facilmente o Dockerfile que desejarem, feito pelo Quarkus. Além disso, configurei um ambiente mais facilitado para APIs REST, incluindo as bibliotecas de **JPA** e **Hibernate** para ORM, e **Lombok** para não ter que escrever um monte de getters e setters. Hahahah.
+
+Eu achei o Quarkus muito da hora e espero que gostem também! Quando começo um projeto, pode ser meio complicado, então gosto de primeiro deixar um bom ambiente para desenvolver. Imagino que muita gente passe pelo mesmo, por isso fiz esse projeto aqui e estou tentando deixar a documentação bem acessível.
+
+### 🚀 Principais Vantagens do Quarkus em Relação ao Spring Boot
+
+- **Desempenho**: Inicialização mais rápida e uso reduzido de memória.
+- **Compilação Nativa**: Suporte à GraalVM para criar executáveis nativos que melhoram ainda mais o desempenho.
+- **Live Coding**: Modo de desenvolvimento que permite ver mudanças no código em tempo real, sem reiniciar a aplicação.
+- **Facilidade de Integração**: Extensões para conectar facilmente com bancos de dados, serviços REST, entre outros.
+
+## 🛠️ Rodando a Aplicação em Modo de Desenvolvimento
+
+Antes de rodar a aplicação, copie o arquivo de exemplo de variáveis de ambiente para um novo arquivo `.env`. Você pode fazer isso com o seguinte comando:
+
+```bash
+cp .env.example .env
+```
+
+Depois, para rodar sua aplicação em modo de desenvolvimento que habilita o live coding, use:
+
+```bash
 ./mvnw compile quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+- Após iniciar a aplicação, você pode acessá-la em http://localhost:8080/hello.
 
-## Packaging and running the application
+- NOTA: Quarkus agora inclui uma Dev UI, que está disponível apenas em modo de desenvolvimento em http://localhost:8080/q/dev/.
 
-The application can be packaged using:
+📦 Empacotando e Rodando a Aplicação
+A aplicação pode ser empacotada usando:
 
-```shell script
+```bash
 ./mvnw package
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+Isso produz o arquivo quarkus-run.jar no diretório target/quarkus-app/. Você pode rodar a aplicação usando:
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+```bash
+java -jar target/quarkus-app/quarkus-run.jar
+```
 
-If you want to build an _über-jar_, execute the following command:
+Se você quiser criar um über-jar, execute o seguinte comando:
 
-```shell script
+```bash
 ./mvnw package -Dquarkus.package.jar.type=uber-jar
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+A aplicação empacotada como um über-jar pode ser executada com:
 
-## Creating a native executable
+```bash
+java -jar target/*-runner.jar
+```
 
-You can create a native executable using:
+🥇 Criando um Executável Nativo
+Você pode criar um executável nativo usando:
 
-```shell script
+```bash
 ./mvnw package -Dnative
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+Ou, se não tiver o GraalVM instalado, você pode construir o executável nativo em um contêiner:
 
-```shell script
+```bash
 ./mvnw package -Dnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/quarkus-api-1.0.0-SNAPSHOT-runner`
+O executável nativo pode ser executado com:
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+```bash
+./target/quarkus-api-1.0.0-SNAPSHOT-runner
+```
 
-## Related Guides
+Para mais informações sobre a criação de executáveis nativos, consulte a documentação do Quarkus.
 
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplify your persistence code for Hibernate ORM via the active record or the repository pattern
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
-- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
+🚀 Rodar a Aplicação
+Para executar a aplicação, utilize:
 
-## Provided Code
+```bash
+./mvnw quarkus:dev
+```
 
-### Hibernate ORM
+## 🐳 Dockerfiles
 
-Create your first JPA entity
+No diretório `src/main/docker`, você encontrará vários **Dockerfiles** que facilitam o empacotamento e a execução da sua aplicação Quarkus:
 
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
+### 📦 Dockerfiles Disponíveis:
 
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
+- **`Dockerfile.jvm`**:  
+  Para rodar a aplicação na JVM, ideal para desenvolvedores que preferem a execução padrão.
 
+- **`Dockerfile.legacy-jar`**:  
+  Para aplicações que requerem o uso de JARs legados.
 
-### RESTEasy JAX-RS
+- **`Dockerfile.native`**:  
+  Para construir uma imagem nativa com o GraalVM, proporcionando melhor desempenho e menores tempos de inicialização.
 
-Easily start your RESTful Web Services
+- **`Dockerfile.native-micro`**:  
+  Ideal para microserviços, otimizando a imagem para ser leve e eficiente.
 
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+## ⚙️ Configuração do Banco de Dados
 
-Caso mude configuracoes talvez seja necessario um `./mvnw clean` 
+Para mais informações sobre como configurar o banco de dados PostgreSQL, consulte as seguintes guias:
 
-pra rodar a aplicacao `./mvnw quarkus:dev`
+- **[Hibernate ORM com Panache](https://quarkus.io/guides/hibernate-orm-panache)**: Simplifique seu código de persistência com o Hibernate ORM.
+- **[Driver JDBC - PostgreSQL](https://quarkus.io/guides/datasource)**: Conecte-se ao banco de dados PostgreSQL via JDBC.
+- **[RESTEasy Classic](https://quarkus.io/guides/resteasy)**: Framework para implementar serviços REST.
+
+## 📚 Código Fornecido
+
+- Hibernate ORM: Crie sua primeira entidade JPA. Mais informações.
+- RESTEasy JAX-RS: Inicie facilmente seus serviços RESTful. Mais informações.
+
+## 🧹 Limpeza e Execução
+
+`Nota`: Caso você mude as configurações, talvez seja necessário rodar:
+
+```bash
+./mvnw clean
+```
