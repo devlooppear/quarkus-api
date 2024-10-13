@@ -75,3 +75,7 @@ Create your first JPA entity
 Easily start your RESTful Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+
+Caso mude configuracoes talvez seja necessario um `./mvnw clean` 
+
+pra rodar a aplicacao `./mvnw quarkus:dev`
