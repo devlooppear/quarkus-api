@@ -122,8 +122,8 @@ Para mais informações sobre como configurar o banco de dados PostgreSQL, consu
 
 ## 📚 Código Fornecido
 
-- Hibernate ORM: Crie sua primeira entidade JPA. Mais informações.
-- RESTEasy JAX-RS: Inicie facilmente seus serviços RESTful. Mais informações.
+- **[Hibernate ORM](https://quarkus.io/guides/hibernate-orm)**: Crie sua primeira entidade JPA. [Mais informações](https://quarkus.io/guides/hibernate-orm).
+- **[RESTEasy JAX-RS](https://quarkus.io/guides/resteasy)**: Inicie facilmente seus serviços RESTful. [Mais informações](https://quarkus.io/guides/resteasy).
 
 ## 🧹 Limpeza e Execução
 
